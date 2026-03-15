@@ -1,30 +1,10 @@
 export function initHero() {
   const container = document.querySelector('.hero-bg-container');
-  // I will use the generated images
-  const images = [
-    '/assets/images/hero_image_bengali_1773571565971.png',
-    '/assets/images/ritual_saatpaak_1773571621464.png',
-    '/assets/images/about_image_bengali_1773571584146.png',
-  ];
-
-  // Inject images
-  images.forEach((src, idx) => {
-    const slide = document.createElement('div');
-    slide.classList.add('hero-bg-slide');
-    if(idx === 0) slide.classList.add('active');
-    slide.style.backgroundImage = `url(${src})`;
-    container.appendChild(slide);
-  });
-
-  const slides = document.querySelectorAll('.hero-bg-slide');
-  let currentSlide = 0;
-
-  // 4 second intervals to allow 2s transition plus 2s viewing time
-  setInterval(() => {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-  }, 4000); 
+  // Inject single static image
+  const slide = document.createElement('div');
+  slide.classList.add('hero-bg-slide', 'active');
+  slide.style.backgroundImage = `url('/assets/images/hero_image_bengali_1773571565971.png')`;
+  container.appendChild(slide);
 
   // Initial text animations using GSAP
   if (typeof gsap !== 'undefined') {
